@@ -44,9 +44,9 @@ api-extractor.json
 ts*
 .vscode/
 
-example
-src
-scripts
+example/
+src/
+scripts/
 .git*
 tsconfig.json
 tslint.json

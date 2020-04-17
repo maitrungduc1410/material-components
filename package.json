@@ -1,19 +1,24 @@
 {
   "name": "@twentyfive/material-components",
   "title": "Material Design Components for React Native",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Material Design Components for React Native",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/github_account/react-native-material-design.git",
-    "baseUrl": "https://github.com/github_account/react-native-material-design"
+    "url": "git+https://github.com/maitrungduc1410/material-components.git",
+    "baseUrl": "https://github.com/maitrungduc1410/material-components"
   },
+  "bugs": {
+    "url": "https://github.com/maitrungduc1410/material-components/issues"
+  },
+  "homepage": "https://github.com/maitrungduc1410/material-components",
   "keywords": [
     "react-native",
     "material-design",
@@ -38,10 +43,6 @@
     "react-native": "^0.62.2",
     "typescript": "^3.8.3"
   },
-  "bugs": {
-    "url": "https://github.com/github_account/react-native-material-design/issues"
-  },
-  "homepage": "https://github.com/github_account/react-native-material-design#readme",
   "directories": {
     "example": "example",
     "lib": "lib"
