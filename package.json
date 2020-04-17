@@ -1,0 +1,49 @@
+{
+  "name": "@twentyfive/material-components",
+  "title": "Material Design Components for React Native",
+  "version": "1.0.0",
+  "description": "Material Design Components for React Native",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/github_account/react-native-material-design.git",
+    "baseUrl": "https://github.com/github_account/react-native-material-design"
+  },
+  "keywords": [
+    "react-native",
+    "material-design",
+    "react-native-material-design",
+    "material design components"
+  ],
+  "author": {
+    "name": "Mai Trung Duc",
+    "email": "maitrungduc1410@gmail.com"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {
+    "react": "^16.8.1",
+    "react-native": ">=0.59.0-rc.0 <1.0.x"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.34",
+    "@types/react-native": "^0.62.2",
+    "react": "16.11.0",
+    "react-native": "^0.62.2",
+    "typescript": "^3.8.3"
+  },
+  "bugs": {
+    "url": "https://github.com/github_account/react-native-material-design/issues"
+  },
+  "homepage": "https://github.com/github_account/react-native-material-design#readme",
+  "directories": {
+    "example": "example",
+    "lib": "lib"
+  }
+}
