@@ -1,6 +1,7 @@
 #import <React/RCTViewManager.h>
-#import "MaterialButtons.h"
 #import <React/RCTConvert.h>
+#import "MaterialButtons.h"
+#import "MaterialButtons+Theming.h"
 
 // MDButton Header
 @interface MDButton: MDCButton
@@ -20,6 +21,8 @@
 @interface MDButtonManager : RCTViewManager
 
 @property (nonatomic, copy) MDButton *button;
+
+@property (nonatomic, copy) MDCContainerScheme *containerScheme;
 
 @end
 
@@ -73,14 +76,38 @@ RCT_CUSTOM_VIEW_PROPERTY(borderRadius, NSInteger, MDCButton)
     view.layer.masksToBounds = true;
 }
 
+RCT_CUSTOM_VIEW_PROPERTY(textSize, NSInteger, MDCButton)
+{
+    view.titleLabel.font = [UIFont systemFontOfSize:[RCTConvert CGFloat:json]];
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(rippleColor, NSInteger, MDCButton)
+{
+    [view setInkColor:[RCTConvert UIColor:json]];
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(type, NSString, MDCButton)
+{
+    NSString *type = [RCTConvert NSString:json];
+    
+    if ([type isEqual: @"text"]) {
+        [_button applyTextThemeWithScheme:_containerScheme];
+    } else if ([type isEqual: @"outline"]) {
+        [_button applyOutlinedThemeWithScheme:_containerScheme];
+    } else {
+        [_button applyContainedThemeWithScheme:_containerScheme];
+    }
+}
+
 - (UIView *)view
 {
-
-  _button = [MDButton new];
-  [_button setTitle:DEFAULT_TEXT forState:UIControlStateNormal];
-  [_button addTarget:self action:@selector(onPress:) forControlEvents:UIControlEventTouchUpInside];
+    _containerScheme = [[MDCContainerScheme alloc] init];
+    _button = [MDButton new];
+    [_button setTitle:DEFAULT_TEXT forState:UIControlStateNormal];
     
-  return _button;
+    [_button addTarget:self action:@selector(onPress:) forControlEvents:UIControlEventTouchUpInside];
+    
+    return _button;
 }
 
 - (void)onPress:(id)sender {

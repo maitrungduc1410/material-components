@@ -1,41 +1,15 @@
-package com.reactlibrary;
+package com.reactlibrary.button;
 
 import android.content.res.ColorStateList;
-import android.view.View;
-import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.uimanager.SimpleViewManager;
-import com.facebook.react.uimanager.ThemedReactContext;
-import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.Map;
 
-public class MDButtonManager extends SimpleViewManager<MaterialButton> {
-    private static final String DEFAULT_TEXT = "My button";
-
-    @Override
-    public String getName() {
-        return "MDButton";
-    }
-
-    @Override
-    protected MaterialButton createViewInstance(ThemedReactContext context) {
-        final RCTEventEmitter emitter = context.getJSModule(RCTEventEmitter.class);
-        MaterialButton button = new MaterialButton(context);
-        button.setText(DEFAULT_TEXT);
-        button.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                WritableMap event = Arguments.createMap();
-                emitter.receiveEvent(v.getId(), "onPress", event);
-            }
-        }));
-
-        return button;
-    }
+public abstract class MDButton extends SimpleViewManager<MaterialButton> {
+    protected final String DEFAULT_TEXT = "My button";
 
     public Map getExportedCustomBubblingEventTypeConstants() {
         return MapBuilder.builder()
@@ -85,5 +59,15 @@ public class MDButtonManager extends SimpleViewManager<MaterialButton> {
     @ReactProp(name = "borderRadius")
     public void setBorderRadius(MaterialButton view, int radius) {
         view.setCornerRadius(radius);
+    }
+
+    @ReactProp(name = "textSize")
+    public void setTextSize(MaterialButton view, float size) {
+        view.setTextSize(size);
+    }
+
+    @ReactProp(name = "rippleColor")
+    public void setRippleColor(MaterialButton view, int color) {
+        view.setRippleColor(ColorStateList.valueOf(color));
     }
 }

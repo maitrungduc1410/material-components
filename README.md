@@ -47,12 +47,18 @@ cd ios && pod install
 import { MDButton } from '@twentyfive/material-components';
 
 <MDButton
-  style={{ width: 200, height: 50 }}
+  style={{ height: 50 }}
+  type={'text'} // type can be : text, outline or undefined
   title={"My Button Text1"}
   onPress={this.onBtnClick}
   textColor={'red'}
+  textSize={20}
   backgroundColor={'black'}
   elevation={5}
   borderRadius={10}
+  borderColor={'blue'}
+  borderWidth={10}
+  rippleColor={'red'}
+  // enabled={false}
 />
 ```

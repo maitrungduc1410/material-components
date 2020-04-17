@@ -16,12 +16,14 @@ export default class App extends Component<{}> {
       <SafeAreaView>
         <Text>Hello world</Text>
         <MDButton
-          style={{ width: 200, height: 50 }}
+          style={{ width: 300, height: 50 }}
           title={"My Button Text1"}
           // onPress={this.onBtnClick}
-          textColor={'red'}
-          backgroundColor={'black'}
-          // backgroundColor
+          // textColor={'white'}
+          // backgroundColor={'black'}
+          rippleColor={'gray'}
+          // textSize={10}
+          // type={'outline'}
         />
       </SafeAreaView>
     )

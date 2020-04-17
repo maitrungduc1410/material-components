@@ -1,4 +1,6 @@
-import MDButton from './MDButton'
+import {
+  MDButton,
+} from './MDButton'
 
 export {
   MDButton,

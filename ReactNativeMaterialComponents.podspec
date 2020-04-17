@@ -21,5 +21,7 @@ Pod::Spec.new do |s|
 
   s.dependency "React"
   s.dependency "MaterialComponents/Buttons"
+  s.dependency "MaterialComponents/Buttons+Theming"
+
 end
 

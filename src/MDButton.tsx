@@ -1,25 +1,48 @@
 import React from 'react'
-import { requireNativeComponent, processColor, HostComponent } from 'react-native'
+import {
+  requireNativeComponent,
+  processColor,
+  HostComponent,
+  Platform,
+} from 'react-native'
+import {
+  IMDButtonProps,
+} from './types'
 
-interface IMDButton {
-  title?: string,
-  enable?: boolean,
-  elevation?: number,
-  textColor?: number,
-  backgroundColor?: number,
-  borderWidth?: number,
-  borderColor?: number,
-  borderRadius?: number
+/*
+  TODO:
+  - elevation on Android
+  - textSize on iOS
+*/
+
+const MDButtonNative: HostComponent<IMDButtonProps> = requireNativeComponent('MDButton')
+const MDTextButtonNative: HostComponent<IMDButtonProps> = requireNativeComponent('MDTextButton')
+const MDOutlineButtonNative: HostComponent<IMDButtonProps> = requireNativeComponent('MDOutlineButton')
+
+const MDButton = (props: IMDButtonProps) => {
+  return (
+    Platform.OS === 'ios' || (Platform.OS === 'android' && !props.type ) ? (
+      AbstractButton(MDButtonNative, props)
+    ) : (
+      props.type === 'text' ? (
+        AbstractButton(MDTextButtonNative, props)
+      ) : (
+        AbstractButton(MDOutlineButtonNative, props)
+      )
+    )
+  )
 }
 
-const MDButtonNative: HostComponent<IMDButton> = requireNativeComponent('MDButton')
-
-const MDButton = (props: IMDButton) => {
-  return <MDButtonNative
+function AbstractButton(Button: HostComponent<IMDButtonProps>, props: IMDButtonProps) {
+  return <Button
           {...props}
           textColor={props.textColor && processColor(props.textColor)}
           backgroundColor={props.backgroundColor && processColor(props.backgroundColor)}
           borderColor={props.borderColor && processColor(props.borderColor)}
+          rippleColor={props.rippleColor && processColor(props.rippleColor)}
         />
 }
-export default MDButton
+
+export {
+  MDButton,
+}
