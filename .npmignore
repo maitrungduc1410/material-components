@@ -50,3 +50,4 @@ scripts
 .git*
 tsconfig.json
 tslint.json
+*.png

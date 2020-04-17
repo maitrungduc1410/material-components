@@ -1,4 +1,6 @@
 <h1 align="center">
+  <img src="./react-native.png" width="150" height="150" />
+  <img src="./material.png" width="150" height="150" /><br>
   React Native Material Design Components
 </h1>
 
