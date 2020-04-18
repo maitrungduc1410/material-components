@@ -9,5 +9,6 @@ export interface IMDButtonProps {
   borderColor?: number,
   borderRadius?: number,
   rippleColor?: number
-  textSize?: number
+  textSize?: number,
+  onPress(data: any): void
 }

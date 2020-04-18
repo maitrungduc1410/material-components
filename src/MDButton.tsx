@@ -3,7 +3,6 @@ import {
   requireNativeComponent,
   processColor,
   HostComponent,
-  Platform,
 } from 'react-native'
 import {
   IMDButtonProps,
@@ -21,19 +20,17 @@ const MDOutlineButtonNative: HostComponent<IMDButtonProps> = requireNativeCompon
 
 const MDButton = (props: IMDButtonProps) => {
   return (
-    Platform.OS === 'ios' || (Platform.OS === 'android' && !props.type ) ? (
-      AbstractButton(MDButtonNative, props)
+    props.type === 'text' ? (
+      AbstractButton(MDTextButtonNative, props)
+    ) : props.type === 'outline' ? (
+      AbstractButton(MDOutlineButtonNative, props)
     ) : (
-      props.type === 'text' ? (
-        AbstractButton(MDTextButtonNative, props)
-      ) : (
-        AbstractButton(MDOutlineButtonNative, props)
-      )
+      AbstractButton(MDButtonNative, props)
     )
   )
 }
 
-function AbstractButton(Button: HostComponent<IMDButtonProps>, props: IMDButtonProps) {
+const AbstractButton = (Button: HostComponent<IMDButtonProps>, props: IMDButtonProps) => {
   return <Button
           {...props}
           textColor={props.textColor && processColor(props.textColor)}
@@ -43,6 +40,4 @@ function AbstractButton(Button: HostComponent<IMDButtonProps>, props: IMDButtonP
         />
 }
 
-export {
-  MDButton,
-}
+export default MDButton

@@ -1,13 +1,14 @@
 #import <React/RCTViewManager.h>
 #import <React/RCTConvert.h>
 #import "MaterialButtons.h"
+#import "MaterialButtons+Theming.h"
 #import "MDButton.h"
 
-@interface MDButtonManager : RCTViewManager
+@interface MDTextButtonManager : RCTViewManager
 
 @end
 
-@implementation MDButtonManager
+@implementation MDTextButtonManager
 
 static NSString * const DEFAULT_TEXT = @"My button";
 
@@ -69,7 +70,9 @@ RCT_CUSTOM_VIEW_PROPERTY(rippleColor, NSInteger, MDCButton)
 
 - (UIView *)view
 {
+    MDCContainerScheme *containerScheme = [[MDCContainerScheme alloc] init];
     MDButton *button = [MDButton new];
+    [button applyTextThemeWithScheme:containerScheme];
     [button setTitle:DEFAULT_TEXT forState:UIControlStateNormal];
     [button addTarget:self action:@selector(onPress:) forControlEvents:UIControlEventTouchUpInside];
     

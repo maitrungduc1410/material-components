@@ -1,7 +1,7 @@
 {
   "name": "@twentyfive/material-components",
   "title": "Material Design Components for React Native",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Material Design Components for React Native",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
